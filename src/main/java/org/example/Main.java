@@ -42,16 +42,16 @@ public class Main {
 */
 
         // Creacion de casas en BBDD
-//        houseDAO.create(slytherin);
-//        houseDAO.create(hufflepuff);
-//        houseDAO.create(ravenclaw);
-//        houseDAO.create(gryffindor);
+        houseDAO.create(slytherin);
+        houseDAO.create(hufflepuff);
+        houseDAO.create(ravenclaw);
+        houseDAO.create(gryffindor);
 
         // Creacion de varitas en BBDD
-//        wandDAO.create(wand1);
-//        wandDAO.create(wand2);
-//        wandDAO.create(wand3);
-//        wandDAO.create(wand4);
+        wandDAO.create(wand1);
+        wandDAO.create(wand2);
+        wandDAO.create(wand3);
+        wandDAO.create(wand4);
 
         // Instanciamos magos con sus respectivas FK
         Wizard harry = new Wizard("Harry Potter",17,1,1);
@@ -60,24 +60,24 @@ public class Main {
         Wizard draco = new Wizard("Draco Malfoy",17, 2, 4);
 
         // Creacion de magos en BBDD
-//        wizardDAO.create(harry);
-//        wizardDAO.create(ron);
-//        wizardDAO.create(hermione);
-//        wizardDAO.create(draco);
+        wizardDAO.create(harry);
+        wizardDAO.create(ron);
+        wizardDAO.create(hermione);
+        wizardDAO.create(draco);
 
         //Listado de magos
-        List<Wizard> wizards = wizardDAO.getAll();
-        for (Wizard w : wizards) {
-            System.out.println("WIZARD RAW -> "+w);
-            House house = houseDAO.getById(w.getHouseId());
-            Wand wand = wandDAO.getById(w.getWandId());
-
-            System.out.println("*****");
-            System.out.println("Nombre: "+w.getName());
-            System.out.println("Edad: "+w.getAge());
-            System.out.println("Casa: "+ house.getName());
-            System.out.println("Varita: "+wand.getWood()+" / "+wand.getCore());
-        }
+//        List<Wizard> wizards = wizardDAO.getAll();
+//        for (Wizard w : wizards) {
+//            System.out.println("WIZARD RAW -> "+w);
+//            House house = houseDAO.getById(w.getHouseId());
+//            Wand wand = wandDAO.getById(w.getWandId());
+//
+//            System.out.println("*****");
+//            System.out.println("Nombre: "+w.getName());
+//            System.out.println("Edad: "+w.getAge());
+//            System.out.println("Casa: "+ house.getName());
+//            System.out.println("Varita: "+wand.getWood()+" / "+wand.getCore());
+//        }
 
         // Listado de casas
         /*List<House> houses = houseDAO.getAll();
