@@ -65,6 +65,10 @@ public class Main {
         wizardDAO.create(hermione);
         wizardDAO.create(draco);*/
 
+ /*       ron.setName("Ronald Weasley");
+        ron.setId(2);
+        wizardDAO.update(ron);*/
+
         //Listado de magos
         List<Wizard> wizards = wizardDAO.getAll();
         for (Wizard w : wizards) {
@@ -73,6 +77,7 @@ public class Main {
             Wand wand = wandDAO.getById(w.getWandId());
 
             System.out.println("*****");
+            System.out.println("id: "+w.getWandId());
             System.out.println("Nombre: "+w.getName());
             System.out.println("Edad: "+w.getAge());
             System.out.println("Casa: "+ house.getName());
