@@ -8,8 +8,8 @@ services:
     ports:
       - "3306:3306"
     volumes:
-      - ./mysql_data:/var/lib/mysql
-      - ./init-scripts:/docker-entrypoint-initdb.d
+      - ./mysql-docker/mysql_data:/var/lib/mysql
+      - ./mysql-docker/init-scripts:/docker-entrypoint-initdb.d
 
   phpmyadmin:
     image: phpmyadmin:latest
