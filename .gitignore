@@ -37,3 +37,8 @@ build/
 
 ### Mac OS ###
 .DS_Store
+
+### mysql data ###
+/mysql-docker/init-scripts/
+/mysql-docker/mysql_data
+/mysql-docker/docker-compose.yml
