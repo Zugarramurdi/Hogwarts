@@ -31,13 +31,12 @@ public class WizardViewSwing extends JFrame {
 
         // Botones
         JButton btnAdd = new JButton("Agregar ➕");
+        JButton btnEdit = new JButton("Editar ✏️");
         JButton btnDelete = new JButton("Eliminar ❌");
         JButton btnRefresh = new JButton("Actualizar 🔄️");
 
         JPanel inputPanel = new JPanel(); // Panel para los botones por encima del panel principal
-        inputPanel.add(btnAdd);
-        inputPanel.add(btnDelete);
-        inputPanel.add(btnRefresh);
+
 
         panel.add(inputPanel, BorderLayout.SOUTH);
 
@@ -55,6 +54,57 @@ public class WizardViewSwing extends JFrame {
         inputPanel.add(new JLabel("Edad:"));
         txtAge = new JTextField(5);
         inputPanel.add(txtAge);
+
+        inputPanel.add(btnAdd);
+        inputPanel.add(btnEdit);
+        inputPanel.add(btnDelete);
+        inputPanel.add(btnRefresh);
+
+
+        // Eventos botones
+
+        btnAdd.addActionListener(e -> {
+            String name = txtName.getText().trim();
+            int age = Integer.parseInt(txtAge.getText().trim());
+            controller.addWizzard(name,age);
+
+            try {
+                loadData();
+            } catch (SQLException ex) {
+                throw new RuntimeException(ex);
+            }
+        });
+
+        btnDelete.addActionListener(e -> {
+            int id = Integer.parseInt(txtId.getText().trim());
+            controller.deleteWizzard(id);
+            try {
+                loadData();
+            } catch (SQLException ex) {
+                throw new RuntimeException(ex);
+            }
+        });
+
+        btnRefresh.addActionListener(e -> {
+            try {
+                loadData();
+            } catch (SQLException ex) {
+                throw new RuntimeException(ex);
+            }
+        });
+
+        btnEdit.addActionListener(e -> {
+            int id = Integer.parseInt(txtId.getText().trim());
+            String name = txtName.getText().trim();
+            int age = Integer.parseInt(txtAge.getText().trim());
+            controller.updateWizzard(id, name, age);
+            try {
+                loadData();
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
+        });
+
 
         try {
             loadData();

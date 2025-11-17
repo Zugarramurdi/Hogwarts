@@ -69,10 +69,32 @@ public class WizardDAO {
 
     }
 
+    public void update2(Wizard wizard) throws SQLException {
+        String sql = "update wizard set name=?, age=? where id=?";
+        PreparedStatement ps = conn.prepareStatement(sql);
+        ps.setString(1, wizard.getName());
+        ps.setInt(2, wizard.getAge());
+        ps.setInt(3, wizard.getId());
+
+        ps.executeUpdate();
+        ps.close();
+
+
+    }
+
     public void delete(int id) throws SQLException {
         String sql = "DELETE FROM wizard WHERE id = ?";
         PreparedStatement ps = conn.prepareStatement(sql);
         ps.setInt(1, id);
+        ps.executeUpdate();
+        ps.close();
+    }
+
+    public void create2(Wizard wizard) throws SQLException {
+        String sql = "INSERT INTO wizard (name, age) VALUES (?, ?)";
+        PreparedStatement ps = conn.prepareStatement(sql);
+        ps.setString(1, wizard.getName());
+        ps.setInt(2, wizard.getAge());
         ps.executeUpdate();
         ps.close();
     }

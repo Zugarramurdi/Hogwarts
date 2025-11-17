@@ -64,6 +64,18 @@ public class WizzardController {
         }
     }
 
+    public void updateWizzard(int id, String name,int age){
+        try{
+            Wizard wizard = new Wizard(name,age);
+            wizard.setId(id);
+            wizardDAO.update2(wizard);
+            System.out.println("✅ Mago actualizado con exito 🪄");
+
+        }catch(SQLException e){
+            System.out.println("❌ Error al actualizar mago: "+e.getMessage());
+        }
+    }
+
     public void deleteWizzard(int id){
         try{
             wizardDAO.delete(id);
@@ -75,4 +87,12 @@ public class WizzardController {
     }
 
 
+    public void addWizzard(String name, int age) {
+        try {
+            wizardDAO.create2(new Wizard(name, age));
+            System.out.println("✅ Mago agregado correctamente");
+        }catch(SQLException e){
+            System.out.println("❌ No se ha podido crear el mago: "+e.getMessage());
+        }
+    }
 }
